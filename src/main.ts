@@ -3,6 +3,7 @@ import { AppModule } from './app.module.js';
 import { ValidationPipe } from '@nestjs/common';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import express from 'express';
+import { ResponseInterceptor } from './common/response.interceptor.js';
 
 const server = express();
 let cachedApp: any;
@@ -17,6 +18,7 @@ async function bootstrap() {
         whitelist:true,forbidNonWhitelisted:true
       })
     );
+    app.useGlobalInterceptors(new ResponseInterceptor);
     await app.init();
     cachedApp = app;
   }

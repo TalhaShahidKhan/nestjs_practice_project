@@ -6,7 +6,6 @@ import { TicketsModule } from './tickets/tickets.module.js';
 
 @Module({
   imports: [
-    
     TicketsModule,
   ],
 })
